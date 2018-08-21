@@ -8,8 +8,18 @@ if [ "$?" -ne "0" ]; then
 	exit 1
 fi
 
-# cross-platform "readlink -f" function; taken and modified (clean ups and made 
-# recursive) from <http://stackoverflow.com/questions/1055671>. 
+platformOpts=
+java -Xdock:name="test" -version 1>/dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+	# running on OSX
+	platformOpts="-Xdock:name=LogicSniffer -Dcom.apple.mrj.application.apple.menu.about.name=LogicSniffer"
+else
+	# running on other platforms
+	platformOpts="-DPlastic.defaultTheme=SkyBluer -Dswing.defaultlaf=com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
+fi
+
+# cross-platform "readlink -f" function; taken and modified (clean ups and made
+# recursive) from <http://stackoverflow.com/questions/1055671>.
 canonical_readlink() {
 	local targetFile=$1
 
@@ -31,6 +41,9 @@ basedir=$(dirname "$scriptname")
 plugindir="$basedir/plugins/"
 classpath="$basedir/bin/*"
 
-# give the client roughly 1gigabyte of memory 
-MEMSETTINGS=-Xmx1024m
-java "$@" "$MEMSETTINGS" -Djna.nosys=true -Dnl.lxtreme.ols.bundle.dir="$plugindir" -DPlastic.defaultTheme=SkyBluer -cp "$classpath" nl.lxtreme.ols.runner.Runner
+# give the client roughly 1gigabyte of memory
+memsettings=-Xmx1024m
+
+java $platformOpts $memsettings -Djna.nosys=true -cp "$classpath" nl.lxtreme.ols.runner.Runner -pluginDir="$plugindir" "$@"
+
+###EOF###

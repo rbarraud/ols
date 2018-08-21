@@ -37,15 +37,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.jgoodies</groupId>
-			<artifactId>looks</artifactId>
+			<artifactId>jgoodies-looks</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.prefs</artifactId>
@@ -56,6 +51,11 @@
 			<artifactId>org.apache.felix.log</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.metatype</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
 		<dependency>
 			<groupId>nl.lxtreme.ols</groupId>
@@ -82,6 +82,11 @@
 			<artifactId>service.acquisition</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+        <dependency>
+            <groupId>nl.lxtreme.ols</groupId>
+            <artifactId>service.config</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 		<dependency>
 			<groupId>nl.lxtreme.ols</groupId>
 			<artifactId>service.io</artifactId>

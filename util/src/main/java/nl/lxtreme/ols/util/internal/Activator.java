@@ -1,5 +1,5 @@
 /*
- * OpenBench LogicSniffer / SUMP project 
+ * OpenBench LogicSniffer / SUMP project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 package nl.lxtreme.ols.util.internal;
 
 
-import java.util.logging.*;
+import java.util.logging.Logger;
 
 import nl.lxtreme.ols.util.*;
 
@@ -58,15 +58,12 @@ public class Activator extends DependencyActivatorBase
     aManager.add( createComponent() //
         .setInterface( HostProperties.class.getName(), null ) //
         .setImplementation( hostProperties ) //
-        );
+    );
 
     aManager.add( createComponent() //
-        .setImplementation( ApplicationCallbackFacade.class ) //
-        .add( //
-            createServiceDependency() //
-                .setService( ApplicationCallback.class ) //
-                .setRequired( false ) ) //
-        );
+        .setImplementation( PlatformCallbackHelper.class ) //
+        .add( createServiceDependency().setService( PlatformCallback.class )
+            .setCallbacks( "setPlatformCallback", "removePlatformCallback" ).setRequired( false ) ) );
   }
 
   /**

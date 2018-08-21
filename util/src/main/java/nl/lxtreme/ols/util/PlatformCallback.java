@@ -1,5 +1,5 @@
 /*
- * OpenBench LogicSniffer / SUMP project 
+ * OpenBench LogicSniffer / SUMP project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,54 +16,48 @@
  * 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  *
  * Copyright (C) 2006-2010 Michael Poppitz, www.sump.org
- * Copyright (C) 2010-2012 J.W. Janssen, www.lxtreme.nl
+ * Copyright (C) 2010 J.W. Janssen, www.lxtreme.nl
  */
-package nl.lxtreme.ols.client.osgi;
+package nl.lxtreme.ols.util;
 
 
-import org.apache.felix.dm.*;
+import java.io.*;
+import java.util.*;
 
 
 /**
- * Provides an adapter for {@link ComponentStateListener}.
+ * Provides hooks into the native platform.
  */
-public abstract class ComponentStateAdapter implements ComponentStateListener
+public interface PlatformCallback
 {
   // METHODS
 
   /**
-   * {@inheritDoc}
+   * Called to show the about box.
    */
-  @Override
-  public void started( final Component aComponent )
-  {
-    // Nop...
-  }
+  void handleAbout();
 
   /**
-   * {@inheritDoc}
+   * Called to handle "re-open" events for the application.
    */
-  @Override
-  public void starting( final Component aComponent )
-  {
-    // Nop...
-  }
+  void handleAppReOpened();
 
   /**
-   * {@inheritDoc}
+   * Called when a list of files should be opened.
+   *
+   * @param aFileList
+   *          the list of files to open.
    */
-  @Override
-  public void stopped( final Component aComponent )
-  {
-    // Nop...
-  }
+  void handleOpenFiles( List<File> aFileList );
 
   /**
-   * {@inheritDoc}
+   * Called to show the preferences dialog.
    */
-  @Override
-  public void stopping( final Component aComponent )
-  {
-    // Nop...
-  }
+  void handlePreferences();
+
+  /**
+   * @return <code>true</code> if the application should quit,
+   *         <code>false</code> otherwise.
+   */
+  boolean shouldQuit();
 }

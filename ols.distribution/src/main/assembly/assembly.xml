@@ -14,9 +14,8 @@
 			<outputDirectory>bin</outputDirectory>
 			<includes>
 				<include>org.apache.felix:org.apache.felix.main</include>
-				<include>org.apache.felix:org.apache.felix.fileinstall</include>
-				<include>org.apache.felix:org.apache.felix.configadmin</include>
-				<include>com.jgoodies:looks</include>
+				<include>com.jgoodies:jgoodies-common</include>
+				<include>com.jgoodies:jgoodies-looks</include>
 				<include>nl.lxtreme.ols:runner</include>
 			</includes>
 			<directoryMode>0755</directoryMode>
@@ -29,7 +28,9 @@
 			<outputDirectory>plugins</outputDirectory>
 			<includes>
 				<include>org.osgi:org.osgi.compendium</include>
-				<include>org.apache.felix:org.apache.felix.log</include>
+				<include>org.apache.felix:org.apache.felix.configadmin</include>
+                <include>org.apache.felix:org.apache.felix.log</include>
+                <include>org.apache.felix:org.apache.felix.metatype</include>
 				<include>org.apache.felix:org.apache.felix.prefs</include>
 				<include>org.apache.felix:org.apache.felix.dependencymanager</include>
 				<include>nl.lxtreme.ols:lib.mydoggy</include>
@@ -38,6 +39,7 @@
 				<include>nl.lxtreme.ols.client:client.project</include>
 				<include>nl.lxtreme.ols:logging</include>
 				<include>nl.lxtreme.ols:service.acquisition</include>
+                <include>nl.lxtreme.ols:service.config</include>
 				<include>nl.lxtreme.ols:service.io</include>
 				<include>nl.lxtreme.ols:service.taskexecution</include>
 				<include>nl.lxtreme.ols:util</include>
@@ -84,7 +86,7 @@
 			<includes>
 				<include>**</include>
 			</includes>
-			<lineEnding>dos</lineEnding>
+			<lineEnding>unix</lineEnding>
 			<directoryMode>0755</directoryMode>
 			<fileMode>0644</fileMode>
 		</fileSet>
@@ -99,7 +101,7 @@
 				<include>CHANGELOG</include>
 				<include>run.bat</include>
 			</includes>
-			<lineEnding>dos</lineEnding>
+			<lineEnding>unix</lineEnding>
 			<directoryMode>0755</directoryMode>
 			<fileMode>0644</fileMode>
 		</fileSet>
